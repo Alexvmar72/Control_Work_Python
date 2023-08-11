@@ -2,6 +2,9 @@ import notebook
 
 number = 3
 
+def menu():
+    print("\nЭто программа 'Заметки'. Выберите необходимый пункт меню:\n\n1 - вывод всех заметок из файла\n2 - добавление заметки\n3 - удаление заметки\n4 - редактирование заметки\n5 - выборка заметок по дате\n6 - показать заметку по id\n7 - выход\n\nВведите номер функции: ")
+
 def add():
     note = create_note(number)
     array = read_file()
@@ -11,7 +14,6 @@ def add():
     array.append(note)
     write_file(array, 'a')
     print('Заметка добавлена...')
-
 
 def show(text):
     logic = True
@@ -31,7 +33,6 @@ def show(text):
                 print(notebook.Note.map_note(notes))
     if logic == True:
         print('Нет ни одной заметки...')
-
 
 def id_edit_del_show(text):
     id = input('Введите id необходимой заметки: ')
@@ -65,7 +66,6 @@ def write_file(array, mode):
         file.write('\n')
     file.close
 
-
 def read_file():
     try:
         array = []
@@ -87,11 +87,6 @@ def create_note(number):
     body = check_len_text_input(
         input('Введите текст заметки: '), number)
     return notebook.Note(title=title, body=body)
-
-
-def menu():
-    print("\nЭто программа 'Заметки'. Выберите необходимый пункт меню:\n\n1 - вывод всех заметок из файла\n2 - добавление заметки\n3 - удаление заметки\n4 - редактирование заметки\n5 - выборка заметок по дате\n6 - показать заметку по id\n7 - выход\n\nВведите номер функции: ")
-
 
 def check_len_text_input(text, n):
     while len(text) <= n:
